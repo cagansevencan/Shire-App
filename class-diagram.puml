@@ -1,0 +1,128 @@
+
+class BusinessDatabase<<Entity>> {
+    + businesses: Business[]
+    + findBusiness()
+}
+
+
+class User <<Entity>> {
+  + firstName: String
+  + lastName: String
+  + email: String
+  + phone: String
+  + favBusinesses: Business[]
+  + businessesCreated: Business[]
+  + createBusiness()
+}
+
+
+
+class Business<<Entity>>{
+  + name: String
+  + address: Location
+  + phone: String
+  + email: String
+  + description: String
+  + website: String
+  + hours: String
+  + deliveryType: DeliveryType
+  + socialMedia: String
+  + BusinessInfo: BusinessDetails
+  + photos: Photo[]
+  + dropOffLocations: Location[]
+}
+
+class LatestPosts<<Entity>>{
+  businesses: Business[]
+}
+
+class Photo<<Entity>>{
+  + photoUrl: String
+}
+
+class BusinessDetails<<Entity>> {
+  + category: Category
+  + practice: Practices[]
+  + foodType: Product[]
+}
+
+class Location<<Entity>> {
+  + coords: Number[]
+  + name: String
+}
+
+enum DeliveryType{
+    HomeDelivery
+    SendToCustomer
+    DropOff
+}
+
+
+
+enum Category {
+  Farm
+  Restaurant
+  FarmersMarket
+  GroceryStore
+  Bakery
+  Winery
+  Brewery
+  Cafe
+}
+
+enum Practices {
+  RegenerativeFarming
+  Biodynamic
+  CertifiedOrganic
+  GrassFed
+  PastureRaised
+  NonGMO
+  GlyphosateFree
+  PesticideFree
+  SeedOilFree
+  ChemicalFree
+  TapWaterFree
+  FarmToTable
+  OrganicMethods
+}
+
+enum Product {
+  Dairy
+  Beef
+  FishSeafood
+  Pork
+  Fruit
+  Vegetables
+  Produce
+  Bread
+  Pastries
+  Cheese
+  Eggs
+  Juice
+  Coffee
+  Tea
+  Wine
+  FermentedFoods
+  Beer
+  OrganMeats
+  IceCream
+  Milk
+}
+
+BusinessDatabase o-- Business
+
+BusinessDetails -down-* Category
+BusinessDetails -down-* Product
+BusinessDetails --* Practices
+
+Business *-- BusinessDetails
+
+Business *-- DeliveryType
+
+Business o-left- Photo
+
+User "0..n" o-->  Business
+
+Business "1" o-- "1" Location
+
+LatestPosts --o Business
