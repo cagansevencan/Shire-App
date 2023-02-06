@@ -1,4 +1,4 @@
-class Practices {
+class Practices extends BusinessDetails {
     constructor() {
         this._categories = {
             RegenerativeFarming,

@@ -1,4 +1,4 @@
-
+@startuml Diagram
 class BusinessDatabase<<Entity>> {
     + businesses: Business[]
     + findBusiness()
@@ -126,3 +126,5 @@ User "0..n" o-->  Business
 Business "1" o-- "1" Location
 
 LatestPosts --o Business
+
+@enduml

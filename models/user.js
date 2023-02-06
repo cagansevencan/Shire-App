@@ -1,44 +1,43 @@
 const uuid = require('uuid');
 const Business = require('./business')
+const Location = require('./location')
 
 class User {
-    constructor({ name, surname, email, phone, favBusinesses = [], businessCreated = [] }) {
+
+    createdAt = new Date();
+    businessesCreated = []
+    favBusinesses = []
+
+    constructor({ name, email, phone, location }) {
         this.id = uuid.v4();
         this.name = name;
-        this.surname = surname;
         this.email = email;
         this.phone = phone;
-        this.favBusinesses = favBusinesses;
-        this.businessCreated = businessCreated;
+        this.location = new Location(location);
     }
 
-    createBusiness(name, description, email, phone, location, website, hours, deliveryType, socialMedia, businessInfo, photos, dropOffLocations) {
+    createBusiness(name, description, email, phone) {
         const business = Business.create({
             name, description,
             email, phone,
-            location, website,
-            hours, deliveryType,
-            socialMedia, businessInfo,
-            photos, dropOffLocations
         })
 
+        this.businessesCreated.push(business)
 
-        this.businessCreated.push(business)
+        return business;
+    }
+
+    favThisBusiness(business) {
+        this.favBusinesses.push(business)
+        business.favs.push(this)
     }
 
 
-    static create({ id, name, surname, email, phone, favBusinesses = [], businessCreated = [] }) {
+    static create = ({ name, email, phone, location }) => {
         const user = new User({
-            name,
-            surname,
-            email,
-            phone,
-            favBusinesses,
-            businessCreated
+            name, email, phone,
+            location
         })
-
-        user.id = id
-
         return user
     }
 }

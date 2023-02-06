@@ -1,26 +1,16 @@
-class Product {
+const BusinessDetails = require('./BusinessDetails');
+
+class Product extends BusinessDetails {
     constructor() {
+        super();
         this._categories = {
-            Dairy,
-            Beef,
-            FishSeafood,
-            Pork,
-            Fruit,
-            Vegetables,
-            Produce,
-            Bread,
-            Pastries,
-            Cheese,
-            Eggs,
-            Juice,
-            Coffee,
-            Tea,
-            Wine,
-            FermentedFoods,
-            Beer,
-            OrganMeats,
-            IceCream,
-            Milk
+            Dairy: "Dairy",
+            Beef: "Beef",
+            FishSeafood: "Salmon",
+            Poultry: "Poultry",
+            Pork: "Pork",
+            Lamb: "Lamb",
+            Eggs: "Eggs"
         };
     }
 

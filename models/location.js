@@ -1,7 +1,7 @@
 class Location {
-    constructor(coords, name) {
-        this.coords = coords;
+    constructor(name, coords) {
         this.name = name;
+        this.coords = coords;
     }
 }
 

@@ -1,42 +1,34 @@
 const uuid = require('uuid');
+const BusinessDetails = require('./Enums/businessDetails');
+const Location = require('./location');
 
 class Business {
-    constructor({ name, description, email, phone, location, website, hours, deliveryType, socialMedia, businessInfo, photos = [], dropOffLocations = [] }) {
+
+    website = '';
+    location = new Location();
+    createdAt = new Date()
+    hours = '';
+    socialMedia = '';
+    photos = [];
+    businessDetails = new BusinessDetails()
+    dropOffLocations = [];
+    deliveryTypes = []
+    favs = [];
+
+    constructor({ name, description, email, phone }) {
         this.id = uuid.v4();
         this.name = name;
         this.description = description;
         this.email = email;
         this.phone = phone;
-        this.location = location;
-        this.website = website;
-        this.hours = hours;
-        this.deliveryType = deliveryType;
-        this.socialMedia = socialMedia;
-        this.businessInfo = businessInfo;
-        this.photos = photos;
-        this.dropOffLocations = dropOffLocations;
     }
 
 
-
-    static create({ id, name, description, email, phone, location, website, hours, deliveryType, socialMedia, businessInfo, photos = [], dropOffLocations = [], }) {
+    static create = ({ name, description, email, phone }) => {
         const business = new Business({
-            name,
-            description,
-            email,
-            phone,
-            location,
-            website,
-            hours,
-            deliveryType,
-            socialMedia,
-            businessInfo,
-            photos,
-            dropOffLocations,
+            name, description,
+            email, phone,
         })
-
-        business.id = id
-
         return business
     }
 
