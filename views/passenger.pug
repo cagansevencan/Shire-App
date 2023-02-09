@@ -1,0 +1,15 @@
+extends layout
+block content
+     h2 Passenger Detail
+     p #{passenger.name}
+    
+     h3 Booking History
+     if passenger.bookings.length
+         ul 
+             each booking in passenger.bookings
+                 li From #{booking.origin} is going to #{booking.destination}
+     else    
+         p No bookings yet
+
+block footer
+    h2 footer
