@@ -1,5 +1,7 @@
 const BusinessDetails = require("./businessDetails");
 
+
+
 class Category extends BusinessDetails {
     constructor() {
         this._categories = {

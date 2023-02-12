@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 app.set('view engine', 'pug');
 
-app.use('/passengers', businessRouter);
+//app.use('/businesses', businessRouter);
 app.use('/', indexRouter);
 
 

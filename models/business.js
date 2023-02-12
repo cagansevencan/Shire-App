@@ -1,37 +1,33 @@
-const uuid = require('uuid');
-const BusinessDetails = require('./Enums/businessDetails');
-const Location = require('./location');
-
-class Business {
-
-    website = '';
-    location = new Location();
-    createdAt = new Date()
-    hours = '';
-    socialMedia = '';
-    photos = [];
-    businessDetails = new BusinessDetails()
-    dropOffLocations = [];
-    deliveryTypes = []
-    favs = [];
-
-    constructor({ name, description, email, phone }) {
-        this.id = uuid.v4();
-        this.name = name;
-        this.description = description;
-        this.email = email;
-        this.phone = phone;
-    }
+const mongoose = require('mongoose');
 
 
-    static create = ({ name, description, email, phone }) => {
-        const business = new Business({
-            name, description,
-            email, phone,
-        })
-        return business
-    }
+const businessSchema = new mongoose.Schema({
+    name: { type: String, required: true, minlength: 2 },
+    description: String,
+    email: { type: String, required: true },
+    phone: String,
+    location: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'BusinessLocations'
+    },
+    createdAt: Date,
+    hours: String,
+    socialMedia: String,
+    photos: [String],
+    businessDetails: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'BusinessDetails',
+        autopopulate: { maxDepth: 2 }
+    },
+    dropOffLocations: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'BusinessDropoffLocations'
+    }],
+    deliveryTypes: [String],
+    // favs: [{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User'
+    // }]
+}, { timestamps: true })
 
-}
-
-module.exports = Business
+module.exports = mongoose.model('Business', businessSchema)

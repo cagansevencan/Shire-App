@@ -1,11 +1,9 @@
-const Practices = require('./Enums/Practices');
-const Products = require('./Enums/Product');
-const Category = require('./Enums/Category');
+const mongoose = require('mongoose');
 
-class BusinessDetails {
-    constructor(category, practice = [], foodType = []) {
-        this.category = category;
-        this.practice = practice;
-        this.foodType = foodType;
-    }
-}
+const businessDetailsSchema = new mongoose.Schema({
+    category: [String],
+    practice: [String],
+    foodType: [String]
+});
+
+module.exports = mongoose.model('BusinessDetails', businessDetailsSchema)
