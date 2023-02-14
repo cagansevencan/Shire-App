@@ -8,7 +8,8 @@ const businessSchema = new mongoose.Schema({
     phone: String,
     location: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'BusinessLocations'
+        ref: 'Location',
+        autopopulate: { maxDepth: 2 }
     },
     createdAt: Date,
     hours: String,
@@ -21,7 +22,7 @@ const businessSchema = new mongoose.Schema({
     },
     dropOffLocations: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'BusinessDropoffLocations'
+        ref: 'Location',
     }],
     deliveryTypes: [String],
     // favs: [{

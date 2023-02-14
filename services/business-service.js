@@ -1,15 +1,43 @@
 const BaseService = require('./base-service')
 const Business = require('../models/business')
 const BusinessDetails = require('../models/business-details')
+const userService = require('./user-service')
+const LocationService = require('./location-service')
+
 
 class BusinessService extends BaseService {
 
-    async addBusinessDetails(businessId, category, practice, foodType) {
-        const business = await this.find(businessId)
-        const businessDetails = await this.model.businessDetailsService.insert({ category, practice, foodType })
-        business.businessDetails = businessDetails
-        await business.save()
-        return businessDetails
+    async addBusinessDetails(userId, name, description, email,
+        location, businessDetails,
+        deliveryTypes) {
+
+        const user = await userService.find(userId)
+
+        location = await LocationService.insert(location)
+
+        console.log(location)
+
+
+        businessDetails = await BusinessDetails.create(
+            businessDetails
+        )
+
+        console.log(businessDetails)
+
+        const business = await this.insert({
+            name, description,
+            email, location, businessDetails,
+            deliveryTypes
+        })
+        console.log("This is Business: ", business)
+
+        //business.businessDetails = businessDetails
+
+        user.businessesCreated.push(business)
+
+        await user.save()
+
+        return business
     }
 
 }

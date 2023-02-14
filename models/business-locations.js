@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
 
 const locationSchema = new mongoose.Schema({
-    name: { type: String, required: true, minlength: 2 },
-    address: { type: String, required: true },
-    zipCode: { type: String, required: true },
+    type: { type: String, default: "Point" },
     coords: {
-        type: "Point",
-        coordinates: [Number]
-    }
-}, { timestamps: true })
+        type: [Number],
+        index: "2dsphere"
+    },
+    autopopulate: { maxDepth: 3 }
+})
 
 module.exports = mongoose.model('BusinessLocations', locationSchema)
 

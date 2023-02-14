@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const businessRouter = require('./routes/business');
 const indexRouter = require('./routes/index');
+const userRouter = require('./routes/user');
 
 require('./mongo-connection')
 
@@ -11,7 +12,8 @@ app.use(bodyParser.json());
 
 app.set('view engine', 'pug');
 
-//app.use('/businesses', businessRouter);
+app.use('/businesses', businessRouter);
+app.use('/users', userRouter);
 app.use('/', indexRouter);
 
 

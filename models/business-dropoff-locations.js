@@ -1,14 +1,12 @@
 const mongoose = require('mongoose');
 
 const locationSchema = new mongoose.Schema({
-    name: { type: String, required: true, minlength: 2 },
-    address: { type: String, required: true },
-    zipCode: { type: String, required: true },
+    type: { type: String, default: "Point" },
     coords: {
-        type: "Point",
-        coordinates: [Number]
+        type: [Number],
+        index: "2dsphere"
     }
-}, { timestamps: true })
+})
 
 module.exports = mongoose.model('BusinessDropoffLocations', locationSchema)
 

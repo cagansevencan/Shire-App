@@ -1,9 +1,21 @@
-POST http://localhost:3000/passengers HTTP/1.1
+
+###
+GET http://localhost:3000/users/ HTTP/1.1
+
+###
+POST http://localhost:3000/users HTTP/1.1
 Content-Type: application/json
 
-{"name": "  ", "location": "SJC"}
+{"name": "Cagan4", "email": "cagan_svncn@gmail.com"}
 
 
 ###
-GET http://localhost:3000/passengers/63e57b1e71eb191ef7a28e0a HTTP/1.1
+POST http://localhost:3000/businesses/63ebfbadcf4a278b5d48fab9/create HTTP/1.1
+Content-Type: application/json
+
+{"name": "ShireFarms", "description": "Welcome to Farm 1", "email": "business1@gmail.com",
+"phone": "1234567890", "location": {"type": "point", "coordinates": [-113.806458, 44.847784]}, 
+"businessDetails": {"category": ["Farm"], "practice": ["Organic", "Sustainable"],
+ "products": ["Fruits", "Vegetables"]},
+ "deliveryTypes": ["Pickup", "Delivery"]}
 

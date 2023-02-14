@@ -1,13 +1,16 @@
-const BaseDatabase = require('./base-database')
+const BaseService = require('./base-service')
 const User = require('../models/user')
 
-class UserDatabase extends BaseDatabase {
+class UserService extends BaseService {
     async findByName(name) {
         return this.findBy('name', name)
     }
 
-    async addBusiness(userId, name, description,) {
+    async addBusiness(userId, name, description, email, location, businessDetails,
+        dropOffLocations, deliveryTypes) {
+
         const user = await this.find(userId)
+
 
         const business = await this.model.businessService.insert({ name, description })
 
@@ -18,4 +21,4 @@ class UserDatabase extends BaseDatabase {
 
 }
 
-module.exports = new UserDatabase(User)
+module.exports = new UserService(User)
