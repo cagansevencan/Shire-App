@@ -1,6 +1,7 @@
 const { businessService } = require('../services');
 const router = require('express').Router();
 const Business = require('../models/business');
+const Location = require('../models/location');
 
 router.get('/', async (req, res) => {
     const businesses = await businessService.load();
@@ -10,18 +11,18 @@ router.get('/', async (req, res) => {
 router.get('/nearby', async (req, res) => {
     const { lat, lng } = req.query;
 
-    const businesses = await Business.aggregate(
-        [
-            {
-                $geoNear: {
-                    near: { type: 'Point', coordinates: [parseFloat(lng), parseFloat(lat)] },
-                    distanceField: 'distance',
-                    maxDistance: 100000,
-                    spherical: true
-                }
+    const businesses = await Location.aggregate([
+        {
+            $geoNear: {
+                near: { type: "Point", coordinates: [parseFloat(lng), parseFloat(lat)] },
+                distanceField: "distance",
+                maxDistance: 1000000,
+                spherical: true
             }
-        ]
-    );
+        }
+
+    ]
+    )
     res.send(businesses);
 })
 

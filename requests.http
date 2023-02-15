@@ -10,7 +10,7 @@ Content-Type: application/json
 
 
 ###
-POST http://localhost:3000/businesses/63ec16f1c84a94be849a1642/create HTTP/1.1
+POST http://localhost:3000/businesses/63ec65079ecb2d9c2761b1b4/create HTTP/1.1
 Content-Type: application/json
 
 {"name": "ShireFarms4", "description": "Welcome to Farm 4", "email": "business1@gmail.com",
@@ -31,4 +31,4 @@ Content-Type: application/json
 {"name": "Cagan New", "email": "cagan3@gmail.com"}
 
 ###
-GET http://localhost:3000/businesses/nearby/?lng=-110&lat=41 HTTP/1.1
+GET http://localhost:3000/businesses/nearby/?lng=-120&lat=41 HTTP/1.1
