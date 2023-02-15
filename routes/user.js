@@ -11,4 +11,16 @@ router.post('', async (req, res) => {
     res.send(user);
 })
 
+router.delete('/:id', async (req, res) => {
+    const { id } = req.params;
+    const user = await userService.removeBy('_id', id);
+    res.send(user);
+})
+
+router.patch('/:id', async (req, res) => {
+    const { id } = req.params;
+    const user = await userService.update(id, req.body);
+    res.send(user);
+})
+
 module.exports = router;

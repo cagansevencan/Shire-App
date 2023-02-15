@@ -10,12 +10,25 @@ Content-Type: application/json
 
 
 ###
-POST http://localhost:3000/businesses/63ebfbadcf4a278b5d48fab9/create HTTP/1.1
+POST http://localhost:3000/businesses/63ec16f1c84a94be849a1642/create HTTP/1.1
 Content-Type: application/json
 
-{"name": "ShireFarms", "description": "Welcome to Farm 1", "email": "business1@gmail.com",
-"phone": "1234567890", "location": {"type": "point", "coordinates": [-113.806458, 44.847784]}, 
+{"name": "ShireFarms4", "description": "Welcome to Farm 4", "email": "business1@gmail.com",
+"phone": "1234567890", "location": {"type": "Point", "coordinates": [-122.4194, 37.7749]}, 
 "businessDetails": {"category": ["Farm"], "practice": ["Organic", "Sustainable"],
  "products": ["Fruits", "Vegetables"]},
  "deliveryTypes": ["Pickup", "Delivery"]}
 
+
+###
+DELETE http://localhost:3000/users/63ebfbadcf4a278b5d48fab9 HTTP/1.1
+
+
+###
+PATCH http://localhost:3000/users/63ec16f1c84a94be849a1642 HTTP/1.1
+Content-Type: application/json
+
+{"name": "Cagan New", "email": "cagan3@gmail.com"}
+
+###
+GET http://localhost:3000/businesses/nearby/?lng=-110&lat=41 HTTP/1.1

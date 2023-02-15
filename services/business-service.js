@@ -12,29 +12,23 @@ class BusinessService extends BaseService {
         deliveryTypes) {
 
         const user = await userService.find(userId)
+        if (!user) throw new Error('User not found')
 
         location = await LocationService.insert(location)
-
-        console.log(location)
-
+        //console.log(location)
 
         businessDetails = await BusinessDetails.create(
             businessDetails
         )
 
-        console.log(businessDetails)
-
+        //console.log(businessDetails)
         const business = await this.insert({
             name, description,
             email, location, businessDetails,
             deliveryTypes
         })
-        console.log("This is Business: ", business)
-
-        //business.businessDetails = businessDetails
 
         user.businessesCreated.push(business)
-
         await user.save()
 
         return business
