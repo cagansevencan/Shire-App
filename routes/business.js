@@ -2,6 +2,7 @@ const { businessService } = require('../services');
 const router = require('express').Router();
 const Business = require('../models/business');
 const Location = require('../models/location');
+const flatted = require('flatted');
 
 router.get('/', async (req, res) => {
     const businesses = await businessService.load();

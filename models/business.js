@@ -17,8 +17,7 @@ const businessSchema = new mongoose.Schema({
     photos: [String],
     businessDetails: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'BusinessDetails',
-        autopopulate: { maxDepth: 2 }
+        ref: 'BusinessDetails'
     },
     dropOffLocations: [{
         type: mongoose.Schema.Types.ObjectId,
