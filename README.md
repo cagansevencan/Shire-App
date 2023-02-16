@@ -1,31 +1,18 @@
 # Shire-App
-<p align="center">
-    <img width="150" src="./client/public/sociol_logo.png">
-</p>
 
-<h1 align="center">Sociol</h1>
+<h3 align="center">Find Real Food Near You</h1>
 
-<div align="center">
-Analysts for your Social Media</br></br>
-</div>
 
 ## 📂 Technologies Used
 
 ### Frontend
 
-- [NextJS]()
-- [Redux](https://github.com/reduxjs/redux)
+- [VueJS](https://github.com/vuejs)
 
 ### Backend
 
-- [Django](https://github.com/django/django)
+- [Node.js](https://github.com/nodejs)
 - [MongoDB Atlas]()
-
-## 📃 Documentation
-
-- [Sprint Board on Notion](https://www.notion.so/SOCIOL-WORKSPACE-ce4b2e57cb624bc799503aab93d6f550)
-
-- [Design Document & Test Plan](https://docs.google.com/document/d/1LJ3sYdDiWNycKB0D7CaV12whC3bwlRjrU7pU4TftlY0/edit?usp=sharing)
 
 ## ⏱ Getting Started
 
