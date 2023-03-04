@@ -3,7 +3,7 @@ const request = require('supertest')(app)
 
 
 
-test.skip('creates a new user', async () => {
+test('creates a new user', async () => {
     const userToCreate = {
         name: 'John',
         email: 'john@gmail.com',
