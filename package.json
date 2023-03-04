@@ -4,11 +4,12 @@
   "description": "Shire App Implementation",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "watch": "nodemon --ignore '*.json'",
-    "test": "jest",
+    "start": "node .bin/www",
+    "watch": "nodemon --ignore '*.json *.log' --exec 'npm start'",
+    "test": "jest --verbose",
+    "test-detect": "jest --detectOpenHandles",
     "test-coverage": "jest --coverage",
-    "test-watch": "jest --watch"
+    "test-watch": "jest --verbose --watch"
   },
   "author": "Cagan Sevencan <cagansvncn@gmail.com>",
   "license": "ISC",
@@ -24,6 +25,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "jest": "^29.4.3"
+    "jest": "^29.4.3",
+    "supertest": "^6.3.3"
   }
 }
