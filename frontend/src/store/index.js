@@ -16,13 +16,7 @@ export default new Vuex.Store({
   },
   mutations: {
     [Mutations.INCREMENT](state, type) {
-      if (type === 'countHome') {
-        state.countHome++
-      }
-      else if (type === 'countAbout') {
-        state.countAbout++
-      }
-      // type === 'countHome' ? state.countHome++ : state.countAbout++
+      type === 'countHome' ? state.countHome++ : state.countAbout++
     },
     [Mutations.DECREMENT](state, type) {
       // if (type === 'countHome' && state.countHome === 0) {
@@ -30,6 +24,8 @@ export default new Vuex.Store({
       // } else if (type === 'countAbout' && state.countAbout === 0) {
       //   return alert('Count cannot be less than 0')
       // } else {
+      // dont let it go below 0
+      if (state[type] === 0) return alert('Count cannot be less than 0')
       type === 'countHome' ? state.countHome-- : state.countAbout--
       // }
 
@@ -41,6 +37,9 @@ export default new Vuex.Store({
     },
     decrement({ commit }, type) {
       commit(Mutations.DECREMENT, type)
+    },
+    async fetchBusinesses() {
+      return [{ name: 'Business 1' }, { name: 'Business 2' }]
     }
   }
 })
