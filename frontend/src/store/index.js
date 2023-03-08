@@ -15,7 +15,14 @@ export default createStore({
   },
   mutations: {
     [Mutations.INCREMENT](state, type) {
-      type === "countHome" ? state.countHome++ : state.countAbout++
+      if (type === 'countHome') {
+        console.log('countHome')
+        state.countHome++
+      }
+      else if (type === 'countAbout') {
+        state.countAbout++
+      }
+      // type === 'countHome' ? state.countHome++ : state.countAbout++
     },
     [Mutations.DECREMENT](state, type) {
       // if (type === 'countHome' && state.countHome === 0) {

@@ -18,8 +18,8 @@ export default {
 .hello
   p {{ msg }}
   .counter {{ count }}
-  button.increment(@click ="increment(type)") Increment
-  button.decrement(@click ="decrement(type)") Decrement
+  button.increment(@click="increment") Increment
+  button.decrement(@click="decrement") Decrement
 </template>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
