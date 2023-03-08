@@ -5,7 +5,7 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String,
-    tpye: String,
+    type: String,
     count: Number
   },
   methods: {
@@ -18,8 +18,8 @@ export default {
 .hello
   p {{ msg }}
   .counter {{ count }}
-  button.increment(@click="increment") Increment
-  button.decrement(@click="decrement") Decrement
+  button.increment(@click="increment(type)") Increment
+  button.decrement(@click="decrement(type)") Decrement
 </template>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

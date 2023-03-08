@@ -1,13 +1,14 @@
 import { createStore } from 'vuex'
+import Vue from 'vue'
+import Vuex from 'vuex'
 
 const Mutations = {
   INCREMENT: 'INCREMENT',
   DECREMENT: 'DECREMENT'
 }
 
-export default createStore({
+export default new Vuex.Store({
   state: {
-    count: 0,
     countHome: 0,
     countAbout: 0
   },
@@ -16,7 +17,6 @@ export default createStore({
   mutations: {
     [Mutations.INCREMENT](state, type) {
       if (type === 'countHome') {
-        console.log('countHome')
         state.countHome++
       }
       else if (type === 'countAbout') {
