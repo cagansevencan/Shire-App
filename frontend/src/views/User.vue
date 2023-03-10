@@ -13,7 +13,7 @@ export default {
         this.isLoading = false
     },
     methods: {
-        ...mapActions(['fetchUser']),
+        ...mapActions(['fetchUser', 'createBusiness']),
     },
 }
 </script>
@@ -27,8 +27,7 @@ export default {
         p {{ user.name }}
         p {{ user.email }}
         p {{ user.createdAt }}
-        button.create Create a Business
-        
+            button.create(@click="createBusiness({userID: user._id, name: 'From Button', description: 'This is description from button', email: 'mail@gmail.com', location: {type: 'Point', coordinates: [-122.4194, 37.7749]} })") Create a Business
         
         
 </template>

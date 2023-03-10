@@ -58,6 +58,16 @@ export default createStore({
     async fetchUser(ctx, userID) {
       const request = await axios.get(`/users/${userID}`)
       return request.data
+    },
+    async createBusiness(ctx, { userID, name, description, email, location }) {
+      try {
+        const request = await axios.post(`/businesses/${userID}/create`,
+          { name, description, email, location }
+        )
+        return request.data
+      } catch (err) {
+        console.log(err)
+      }
     }
   }
 })
