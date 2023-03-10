@@ -41,3 +41,6 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/businesses/nearby/?lng=-120&lat=41 HTTP/1.1
+
+###
+GET http://localhost:3000/location/63ed6c6a974f35b0b012ca09 HTTP/1.1

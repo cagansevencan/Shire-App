@@ -27,17 +27,16 @@ router.get('/nearby', async (req, res) => {
                 spherical: true
             }
         }
-
     ]
     )
     //find businesses that have the nearest location
     const businesses = await businessService.load(
-
         { _id: { $in: locations.map(l => l.businessId) } }
     );
 
     res.send(businesses);
 })
+
 
 
 router.post('/:userId/create', async (req, res) => {
