@@ -42,6 +42,22 @@ export default createStore({
     async fetchBusinesses() {
       const request = await axios.get('/businesses')
       return request.data
+    },
+    async fetchBusiness(ctx, businessID) {
+      const request = await axios.get(`/businesses/${businessID}`)
+      return request.data
+    },
+    async fetchBusinessLocations(ctx, locationID) {
+      const request = await axios.get(`/location/${locationID}`)
+      return request.data
+    },
+    async fetchUsers() {
+      const request = await axios.get('/users')
+      return request.data
+    },
+    async fetchUser(ctx, userID) {
+      const request = await axios.get(`/users/${userID}`)
+      return request.data
     }
   }
 })
