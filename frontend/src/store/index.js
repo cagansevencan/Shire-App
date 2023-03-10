@@ -1,13 +1,14 @@
 import { createStore } from 'vuex'
-import Vue from 'vue'
-import Vuex from 'vuex'
+import axios from 'axios'
+
+axios.defaults.baseURL = 'http://localhost:3000'
 
 const Mutations = {
   INCREMENT: 'INCREMENT',
   DECREMENT: 'DECREMENT'
 }
 
-export default new Vuex.Store({
+export default createStore({
   state: {
     countHome: 0,
     countAbout: 0
@@ -39,7 +40,8 @@ export default new Vuex.Store({
       commit(Mutations.DECREMENT, type)
     },
     async fetchBusinesses() {
-      return [{ name: 'Business 1' }, { name: 'Business 2' }]
+      const request = await axios.get('/businesses')
+      return request.data
     }
   }
 })
