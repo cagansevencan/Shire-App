@@ -8,7 +8,8 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:businessID', async (req, res) => {
-    const business = await businessService.find(req.params.businessID);
+    const id = req.params.businessID
+    const business = await businessService.find(id);
 
     if (!business) return res.status(404);
     res.send(business);
