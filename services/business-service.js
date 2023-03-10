@@ -3,7 +3,6 @@ const Business = require('../models/business')
 const BusinessDetails = require('../models/business-details')
 const userService = require('./user-service')
 const LocationService = require('./location-service')
-const CircularJSON = require('circular-json');
 
 class BusinessService extends BaseService {
 

@@ -9,6 +9,9 @@ POST http://localhost:3000/ HTTP/1.1
 GET http://localhost:3000/businesses/ HTTP/1.1
 
 ###
+GET http://localhost:3000/businesses/63ed6fe4790fec5f6d438146 HTTP/1.1
+
+###
 POST http://localhost:3000/users HTTP/1.1
 Content-Type: application/json
 

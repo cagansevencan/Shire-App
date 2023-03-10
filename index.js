@@ -3,12 +3,14 @@ const bodyParser = require('body-parser');
 const businessRouter = require('./routes/business');
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
+const cors = require('cors');
 
 require('./mongo-connection')
 
 const app = express();
 //Bodyparser middleware oldugu icin boyle kullaniyoruz
 app.use(bodyParser.json());
+app.use(cors());
 
 app.set('view engine', 'pug');
 

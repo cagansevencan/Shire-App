@@ -17,6 +17,7 @@
     "body-parser": "^1.20.1",
     "circular-json": "^0.5.9",
     "colors": "1.4.0",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "flatted": "^3.2.7",
     "mongoose": "^6.9.1",

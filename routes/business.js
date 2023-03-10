@@ -1,18 +1,23 @@
 const { businessService } = require('../services');
 const router = require('express').Router();
-const Business = require('../models/business');
 const Location = require('../models/location');
-const flatted = require('flatted');
 
 router.get('/', async (req, res) => {
     const businesses = await businessService.load();
     res.send(businesses);
 })
 
+router.get('/:businessID', async (req, res) => {
+    const business = await businessService.find(req.params.businessID);
+
+    if (!business) return res.status(404);
+    res.send(business);
+})
+
 router.get('/nearby', async (req, res) => {
     const { lat, lng } = req.query;
 
-    const businesses = await Location.aggregate([
+    const locations = await Location.aggregate([
         {
             $geoNear: {
                 near: { type: "Point", coordinates: [parseFloat(lng), parseFloat(lat)] },
@@ -24,9 +29,14 @@ router.get('/nearby', async (req, res) => {
 
     ]
     )
+    //find businesses that have the nearest location
+    const businesses = await businessService.load(
+
+        { _id: { $in: locations.map(l => l.businessId) } }
+    );
+
     res.send(businesses);
 })
-
 
 
 router.post('/:userId/create', async (req, res) => {
