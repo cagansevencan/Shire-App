@@ -34,8 +34,7 @@ export default {
 <template lang="pug">
 .about
   h1 This is an about page
-  p(v-if="errMessage") {{ errMessage }}
-  p(v-else-if="isLoading") Loading...
+  p(v-if="isLoading") Loading...
   p(v-else)
     h2 There {{ users.length === 1 ? 'is' : 'are' }} {{ users.length }} user{{ users.length === 1 ? '' : 's' }}.
     ol

@@ -34,8 +34,7 @@ export default {
 <template lang="pug">
 .home
   h1 Businesses 
-  p(v-if="errMessage") {{ errMessage }}
-  p(v-else-if="isLoading") Loading...
+  p(v-if="isLoading") Loading...
   p(v-else) There are {{ businesses.length }} businesses.
   ol
     li(v-for="business in businesses")

@@ -1,5 +1,7 @@
 <script>
 import { mapActions } from 'vuex'
+import Map from '@/components/Map.vue'
+
 export default {
     name: 'BusinessView',
     data() {
@@ -8,6 +10,9 @@ export default {
             business: {},
             location: {}
         }
+    },
+    components: {
+        Map
     },
     async mounted() {
         this.business = await this.fetchBusiness(this.$route.params.id)
@@ -22,8 +27,7 @@ export default {
 
 <template lang="pug">
 .business 
-    p(v-if="errMessage") {{ errMessage }}
-    p(v-else-if="isLoading") Loading...
+    p(v-if="isLoading") Loading...
     p(v-else) 
         h1 Business Details
         p {{ business.name }}
@@ -31,5 +35,7 @@ export default {
         p {{ business.location }}
         h2 Location Details
         p {{ location.coordinates }}
+.Map
+    Map
         
 </template>
