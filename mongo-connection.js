@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 mongoose.set("strictQuery", true);
 
-mongoose.createConnection('mongodb://127.0.0.1/shire-app', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.createConnection('mongodb://localhost/shire-app', { useNewUrlParser: true, useUnifiedTopology: true });
+
+
 
 var db = mongoose.connection;
 
