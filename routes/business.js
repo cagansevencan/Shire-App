@@ -7,13 +7,6 @@ router.get('/', async (req, res) => {
     res.send(businesses);
 })
 
-router.get('/:businessID', async (req, res) => {
-    const id = req.params.businessID
-    const business = await businessService.find(id);
-
-    if (!business) return res.status(404);
-    res.send(business);
-})
 
 router.get('/nearby', async (req, res) => {
     const { lat, lng } = req.query;
@@ -36,6 +29,15 @@ router.get('/nearby', async (req, res) => {
 
     res.send(businesses);
 })
+
+router.get('/:businessID', async (req, res) => {
+    const id = req.params.businessID
+    const business = await businessService.find(id);
+
+    if (!business) return res.status(404);
+    res.send(business);
+})
+
 
 
 
