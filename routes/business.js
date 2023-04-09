@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
 })
 
 
-router.get('/nearby', async (req, res) => {
+router.get('/nearby/', async (req, res) => {
     const { lat, lng } = req.query;
 
     const locations = await Location.aggregate([

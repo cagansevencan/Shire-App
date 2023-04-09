@@ -43,14 +43,18 @@ export default createStore({
       const request = await axios.get('/businesses')
       return request.data
     },
+
+    async fetchNearbyBusinesses(ctx, { lat, lng }) {
+      console.log("This is the lat and lng: ", lat, lng, "and this is ctx : ", ctx)
+      const request = await axios.get(`/businesses/nearby/?lng=${lng}&lat=${lat}`)
+      return request.data
+    },
+
     async fetchBusiness(ctx, businessID) {
       const request = await axios.get(`/businesses/${businessID}`)
       return request.data
     },
-    async fetchNearbyBusinesses(ctx, { lat, lng }) {
-      const request = await axios.get(`/businesses/nearby/?lng=${lng}&lat=${lat}`)
-      return request.data
-    },
+
     async fetchBusinessLocations(ctx, locationID) {
       const request = await axios.get(`/location/${locationID}`)
       return request.data
