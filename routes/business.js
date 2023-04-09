@@ -10,22 +10,30 @@ router.get('/', async (req, res) => {
 
 router.get('/nearby/', async (req, res) => {
     const { lat, lng } = req.query;
+    // const lat = 35.271448302082476;
+    // const lng = -120.66220283508301;
+    if (lat === '0' && lng === '0') {
+        return res.send([]);
+    }
 
     const locations = await Location.aggregate([
         {
             $geoNear: {
                 near: { type: "Point", coordinates: [parseFloat(lng), parseFloat(lat)] },
                 distanceField: "distance",
-                maxDistance: 1000000,
+                maxDistance: 100000,
                 spherical: true
             }
         }
     ]
     )
+    const locationIds = [...new Set(locations.map((l) => l._id))]
+
+
     //find businesses that have the nearest location
-    const businesses = await businessService.load(
-        { _id: { $in: locations.map(l => l.businessId) } }
-    );
+    const businesses = await businessService.findBy('location', { $in: locationIds });
+
+
 
     res.send(businesses);
 })

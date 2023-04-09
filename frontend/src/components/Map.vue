@@ -19,7 +19,7 @@ export default {
 <template>
     <div>
         <h1>Your coordinates:</h1>
-        <p> Latitude: {{ lat }} <br /> Longitude: {{ lng }}</p>
+        <p> Longitude: {{ lng }} <br /> Latitude: {{ lat }} </p>
         <p></p>
 
     </div>

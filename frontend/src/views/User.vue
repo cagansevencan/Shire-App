@@ -39,7 +39,7 @@ export default {
         p Email
         input(v-model="email")
         p
-        button.create(@click="createBusiness({userID: user._id, name, description, email, location: {type: 'Point', coordinates: [-122.4194, 37.7749]} })") Create a Business
+        button.create(@click="createBusiness({userID: user._id, name, description, email, location: {type: 'Point', coordinates: [-120.4194, 35]} })") Create a Business
         
         
 </template>

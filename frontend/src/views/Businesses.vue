@@ -4,6 +4,8 @@
 import { useGeolocation } from '../useGeolocation'
 import { useStore } from "vuex";
 import { ref, computed, watchEffect, onMounted } from "vue";
+import { on } from 'events';
+import { debounce } from 'lodash';
 
 
 export default {
@@ -21,7 +23,7 @@ export default {
 
 
     const fetchData = async () => {
-      console.log("fetching data...");
+      console.log("fetching data...", lat.value, lng.value);
       isLoading.value = true;
       try {
         const data = await store.dispatch('fetchNearbyBusinesses', { lat: lat.value, lng: lng.value });
@@ -33,9 +35,14 @@ export default {
         isLoading.value = false;
       }
     }
+
+    const fetchDataDebounced = debounce(fetchData, 100);
+
+
     watchEffect(() => {
-      fetchData();
+      fetchDataDebounced();
     });
+
 
     const businessesCount = computed(() => {
       return businesses.value.length > 0 ? businesses.value.length : null;
@@ -64,6 +71,6 @@ export default {
     li(v-for="business in businesses")
       a(:href="`/businesses/${business._id}`") {{ business.name }}
   <h1>Your coordinates:</h1>
-  <p> Latitude: {{ lat }} <br /> Longitude: {{ lng }}</p>
+  <p> Longitude: {{ lng }} <br /> Latitude: {{ lat }} </p>
 
 </template>
